@@ -1,22 +1,35 @@
 SkillStack
 A Personal Skill-Building Tracker for Courses, Tutorials, and Certifications
 
-SkillStack is a full-stack web application that helps users track and manage their learning journey across different online platforms such as YouTube, Udemy, and Coursera. The application allows users to add skills, associate learning resources, manually update progress, and visualize skill growth through a dashboard.
+SkillStack is a full-stack web application designed to help users track, organize, and manage their learning journey across multiple online platforms such as YouTube, Udemy, and Coursera.
+The application enables users to add skills, associate learning resources, manually update progress, and visualize skill growth through an interactive dashboard.
 
-Features
+🚀 Features
 
 Add and manage learning skills
 Store learning resources (videos, courses, articles)
-Track progress manually (Not Started, In Progress, Completed)
-Record hours spent and learning notes
-Rate difficulty level of skills
-Dashboard with skill insights and category-wise breakdown
+Manual progress tracking:
 
-Tech Stack
+Not Started
+
+In Progress
+
+Completed
+
+Record hours spent and personal learning notes
+Rate difficulty level of each skill
+
+Dashboard with:
+
+Skill insights
+Category-wise progress breakdown
+
+🛠️ Tech Stack
 Frontend
 
 ReactJS
-HTML5, CSS3
+HTML5
+CSS3
 JavaScript
 
 Backend
@@ -27,58 +40,71 @@ Django REST Framework
 
 Database
 
-SQLite (development)
+SQLite (for development)
 
-
-Project Workflow
+🔄 Project Workflow
 
 User logs into the system
-Dashboard displays learning overview
-User adds skills in the Skills section
+Dashboard displays an overview of learning progress
+User adds skills under the Skills section
 Learning resources are added under Resources
 User manually updates progress after learning externally
 Dashboard updates automatically based on progress
 
-Note: SkillStack does not automatically track activity from external platforms. All progress updates are manual.
+Note: SkillStack does not automatically track activity from external platforms. All progress updates are done manually by the user.
 
-API Endpoints
+🔗 API Endpoints
 
 /api/skills/
+
 /api/resources/
+
 /api/progress/
+
 /api/categories/
+
 /api/certifications/
 
-Setup Instructions
-
+⚙️ Setup Instructions
 Backend Setup (Django)
-Projectname:SkillTrack
-App Name:tracker
+
+Project Name: SkillTrack
+App Name: tracker
+
 cd skillstack/backend
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+
+
+Activate virtual environment:
+
+# Windows
+venv\Scripts\activate
+
+# macOS/Linux
+source venv/bin/activate
+
+
+Install dependencies and run the server:
+
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 
-
 Frontend Setup (React)
-
 cd skillstack/frontend
 npm install
 npm start
 
+🤖 AI Features Included (Optional Enhancements)
 
-AI Features Included
+Learning resource recommendations
 
-Learning resource recommendations,
-Notes summarization,
-Skill mastery date prediction,
-Categorization of skills,
+Notes summarization
 
+Skill categorization
 
-Author
+Skill mastery date prediction
+
+👤 Author
+
 Linju Rajan
-
-
-
