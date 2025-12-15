@@ -57,11 +57,38 @@ const Certifications = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Convert skills to integers
-      const certData = {
-        ...formData,
-        skills: formData.skills.map(skillId => parseInt(skillId))
+      // Prepare certification data - clean up all fields
+      let certData = {
+        name: formData.name.trim(),
+        issuing_organization: formData.issuing_organization.trim(),
+        issue_date: formData.issue_date
       };
+      
+      // Add optional fields only if they have values
+      if (formData.description && formData.description.trim() !== '') {
+        certData.description = formData.description.trim();
+      }
+      
+      if (formData.expiration_date && formData.expiration_date.trim() !== '') {
+        certData.expiration_date = formData.expiration_date;
+      }
+      
+      if (formData.credential_id && formData.credential_id.trim() !== '') {
+        certData.credential_id = formData.credential_id.trim();
+      }
+      
+      if (formData.credential_url && formData.credential_url.trim() !== '') {
+        certData.credential_url = formData.credential_url.trim();
+      }
+      
+      // Only include skills if there are any selected
+      if (formData.skills && formData.skills.length > 0) {
+        certData.skills = formData.skills.map(skillId => {
+          // Handle both string and number skill IDs
+          const id = typeof skillId === 'string' ? parseInt(skillId, 10) : skillId;
+          return isNaN(id) ? skillId : id;
+        });
+      }
       
       if (editingCertification) {
         await updateCertification(editingCertification.id, certData);
@@ -72,7 +99,23 @@ const Certifications = () => {
       resetForm();
     } catch (error) {
       console.error('Error saving certification:', error);
-      setError('Failed to save certification: ' + error.message);
+      if (error.response && error.response.data) {
+        console.error('Error details:', error.response.data);
+        // Check if it's a validation error from Django
+        if (error.response.data.detail) {
+          setError('Failed to save certification: ' + error.response.data.detail);
+        } else if (typeof error.response.data === 'object') {
+          // Handle field-specific errors
+          const errorMessages = Object.entries(error.response.data)
+            .map(([field, messages]) => `${field}: ${Array.isArray(messages) ? messages.join(', ') : messages}`)
+            .join('; ');
+          setError('Failed to save certification: ' + errorMessages);
+        } else {
+          setError('Failed to save certification: ' + (error.response.data.error || error.response.data || error.message));
+        }
+      } else {
+        setError('Failed to save certification: ' + error.message);
+      }
     }
   };
 
@@ -82,7 +125,7 @@ const Certifications = () => {
       name: certification.name,
       issuing_organization: certification.issuing_organization,
       description: certification.description || '',
-      skills: certification.skills.map(skill => skill.id.toString()),
+      skills: certification.skills ? certification.skills.map(skill => skill.id.toString()) : [],
       issue_date: certification.issue_date,
       expiration_date: certification.expiration_date || '',
       credential_id: certification.credential_id || '',

@@ -31,7 +31,7 @@ const Profile = () => {
             <div className="profile-details">
               <div className="detail-row">
                 <span className="detail-label">Member Since:</span>
-                <span className="detail-value">January 2023</span>
+                <span className="detail-value">December 15</span>
               </div>
               <div className="detail-row">
                 <span className="detail-label">Skills Tracked:</span>
