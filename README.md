@@ -4,16 +4,15 @@ A Personal Skill-Building Tracker for Courses, Tutorials, and Certifications
 SkillStack is a full-stack web application designed to help users track, organize, and manage their learning journey across multiple online platforms such as YouTube, Udemy, and Coursera.
 The application enables users to add skills, associate learning resources, manually update progress, and visualize skill growth through an interactive dashboard.
 
-🚀 Features
+Features
+
 
 Add and manage learning skills
 Store learning resources (videos, courses, articles)
 Manual progress tracking:
 
 Not Started
-
 In Progress
-
 Completed
 
 Record hours spent and personal learning notes
@@ -23,6 +22,7 @@ Dashboard with:
 
 Skill insights
 Category-wise progress breakdown
+
 
 🛠️ Tech Stack
 Frontend
@@ -98,11 +98,8 @@ npm start
 🤖 AI Features Included (Optional Enhancements)
 
 Learning resource recommendations
-
 Notes summarization
-
 Skill categorization
-
 Skill mastery date prediction
 
 👤 Author
