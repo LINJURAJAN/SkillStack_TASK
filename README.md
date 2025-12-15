@@ -72,7 +72,7 @@ AI Features Included
 Learning resource recommendations,
 Notes summarization,
 Skill mastery date prediction,
-Auto-categorization of skills,
+Categorization of skills,
 
 
 Author
